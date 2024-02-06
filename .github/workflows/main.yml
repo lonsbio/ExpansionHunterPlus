@@ -36,7 +36,7 @@ jobs:
       with:
        files: |
              ./build/install/bin/ExpansionHunter
-             ./variant_catalog/
-             ./example
+             ./variant_catalog/*
+             ./example/*
       env:
        GITHUB_TOKEN: ${{ secrets.EHP_DEPLOY_KEY }}
