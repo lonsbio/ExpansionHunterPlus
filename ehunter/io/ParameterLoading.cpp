@@ -61,7 +61,8 @@ struct UserParameters
     double minLocusCoverage = 10.0;
     int qualityCutoffForGoodBaseCall = 20;
     bool skipUnaligned;
-
+    bool strict;
+    string sampleId;
     string analysisMode;
     string logLevel;
     int threadCount;
@@ -94,6 +95,8 @@ boost::optional<UserParameters> tryParsingUserParameters(int argc, char** argv)
         ("analysis-mode", po::value<string>(&params.analysisMode)->default_value("seeking"), "Analysis workflow to use (seeking or streaming)")
         ("threads", po::value(&params.threadCount)->default_value(1), "Number of threads to use")
         ("log-level", po::value<string>(&params.logLevel)->default_value("info"), "trace, debug, info, warn, or error")
+        ("strict", po::bool_switch(&params.strict)->default_value(false), "Terminate the program instead of giving warnings, such as when encountering a locus with more than 5 N characters")
+        ("sample-id", po::value<string>(&params.sampleId), "Sample ID")
     ;
     // clang-format on
 
@@ -243,10 +246,21 @@ void assertValidity(const UserParameters& userParameters)
 SampleParameters decodeSampleParameters(const UserParameters& userParams)
 {
     fs::path boostHtsFilePath(userParams.htsFilePath);
-    auto sampleId = boostHtsFilePath.stem().string();
+    std::string sampleId;
+
+    if (userParams.sampleId.empty()) {
+        // Use file name stem as sampleId when sample ID has not been specified
+        sampleId = boostHtsFilePath.stem().string();
+    } else {
+        // Use sample ID that user specified
+        sampleId = userParams.sampleId;
+    }
+
     Sex sex = decodeSampleSex(userParams.sampleSexEncoding);
+    
     return SampleParameters(sampleId, sex);
 }
+
 
 AnalysisMode decodeAnalysisMode(const string& encoding)
 {
@@ -327,7 +341,7 @@ boost::optional<ProgramParameters> tryLoadingProgramParameters(int argc, char** 
     SampleParameters sampleParameters = decodeSampleParameters(userParams);
     HeuristicParameters heuristicParameters(
         userParams.regionExtensionLength, userParams.minLocusCoverage, userParams.qualityCutoffForGoodBaseCall,
-        userParams.skipUnaligned, decodeAlignerType(userParams.alignerType));
+        userParams.skipUnaligned, userParams.strict, decodeAlignerType(userParams.alignerType));
 
     LogLevel logLevel;
     try

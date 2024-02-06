@@ -20,7 +20,7 @@ set(installDir ${CMAKE_CURRENT_BINARY_DIR}/install)
 
 ExternalProject_Add(htslib
 	BUILD_IN_SOURCE YES
-	URL https://github.com/samtools/htslib/releases/download/1.10.2/htslib-1.10.2.tar.bz2
+	URL https://github.com/samtools/htslib/releases/download/1.19/htslib-1.19.tar.bz2
 	CONFIGURE_COMMAND ./configure --prefix=${installDir} --enable-libcurl --enable-s3
 	BUILD_COMMAND $(MAKE) lib-static
 )
@@ -54,7 +54,7 @@ ExternalProject_Add(Boost
 
 
 ExternalProject_Add(spdlog
-	URL https://github.com/gabime/spdlog/archive/refs/tags/v1.6.1.tar.gz
+	URL https://github.com/gabime/spdlog/archive/refs/tags/v1.12.0.tar.gz
 	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${installDir}
 		-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
 		-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
@@ -62,7 +62,7 @@ ExternalProject_Add(spdlog
 
 
 ExternalProject_Add(googletest
-	URL https://github.com/google/googletest/archive/refs/tags/release-1.10.0.tar.gz
+	URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
 	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${installDir}
 		-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
 		-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}

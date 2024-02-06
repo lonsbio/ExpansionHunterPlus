@@ -80,7 +80,8 @@ int32_t ReferenceContigInfo::getContigId(const std::string& contigName) const
 
     if (entry == nameToIndex_.end())
     {
-        throw std::logic_error("Invalid contig name " + contigName);
+        const string message = "Warning: Invalid contig name (" + contigName + "). Skipping the locus.\n";
+        throw message;
     }
 
     return entry->second;

@@ -15,7 +15,6 @@ message(STATUS "BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost 1.73 REQUIRED COMPONENTS program_options filesystem system)
 
-
 add_compile_options(-Wall -Werror -Wextra)
 
 enable_testing()
@@ -96,7 +95,6 @@ add_library(ExpansionHunterLib
         sample/IndexBasedDepthEstimate.hh sample/IndexBasedDepthEstimate.cpp
         sample/MateExtractor.hh sample/MateExtractor.cpp
         )
-
 
 set(CTPL_INCLUDE_DIRS thirdparty/ctpl/ctpl-0.0.2)
 target_include_directories(ExpansionHunterLib PUBLIC ${CMAKE_SOURCE_DIR})

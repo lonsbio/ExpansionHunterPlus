@@ -1,3 +1,17 @@
+# Information about this repository
+This repository is a fork of the latest version of [ExpansionHunter (v5.0.0)](https://github.com/Illumina/ExpansionHunter) and includes the following modifications:
+1. By default, it treats the following errors as warnings and does not terminate the program: _"Error loading locus x: Flanks can contain at most 5 characters N but found x Ns.", "Invalid contig name." and "Unable to extract X from Y."_. 
+2. The VCF files now include an `SVTYPE=STR` info field for each locus (was absent in the original program).
+3. Users can specify the sample ID from the command line using the `--sample-id` parameter, e.g., `--sample-id ABCD1234`. By default, if not specified, the sample ID is derived from the file name.
+4. Compiling the program uses updated libraries that should resolve some issues when building the application that happened with older ones.
+
+## Other useful resources
+- [Tools for ExpansionHunter](https://gitlab.com/andreassh/tools-for-expansionhunter) repository has scripts for annotating VCF files with disease information as well as converting BED files into variant catalogues.
+- [STRipy's ExpansionHunter Results Analyzer](https://stripy.org/expansionhunter-results-analyzer) allows to easily and quickly assess results from the ExpansionHunter's output files.
+- [STRipy's ExpansionHunter Catalogue Creator](https://stripy.org/expansionhunter-results-analyzer) helps to create custom variant catalogues for different referent genomes.
+
+---
+
 # Expansion Hunter: a tool for estimating repeat sizes
 
 There are a number of regions in the human genome consisting of repetitions of

@@ -113,7 +113,7 @@ class HeuristicParameters
 {
 public:
     HeuristicParameters(
-        int regionExtensionLength, int minLocusCoverage, int qualityCutoffForGoodBaseCall, bool skipUnaligned,
+        int regionExtensionLength, int minLocusCoverage, int qualityCutoffForGoodBaseCall, bool skipUnaligned, bool strict,
         const graphtools::AlignerType alignerType, int kmerLenForAlignment = 14, int paddingLength = 10,
         int seedAffixTrimLength = 14, int orientationPredictorKmerLen = 10, int orientationPredictorMinKmerCount = 3)
         : regionExtensionLength_(regionExtensionLength)
@@ -121,6 +121,7 @@ public:
         , qualityCutoffForGoodBaseCall_(qualityCutoffForGoodBaseCall)
         , skipUnaligned_(skipUnaligned)
         , alignerType_(std::move(alignerType))
+        , strict_(strict)
         , kmerLenForAlignment_(kmerLenForAlignment)
         , paddingLength_(paddingLength)
         , seedAffixTrimLength_(seedAffixTrimLength)
@@ -134,6 +135,7 @@ public:
     int qualityCutoffForGoodBaseCall() const { return qualityCutoffForGoodBaseCall_; }
     bool skipUnaligned() const { return skipUnaligned_; }
     graphtools::AlignerType alignerType() const { return alignerType_; }
+    bool strict() const { return strict_; }
     int kmerLenForAlignment() const { return kmerLenForAlignment_; }
     int paddingLength() const { return paddingLength_; }
     int seedAffixTrimLength() const { return seedAffixTrimLength_; }
@@ -146,6 +148,7 @@ private:
     int qualityCutoffForGoodBaseCall_;
     bool skipUnaligned_;
     graphtools::AlignerType alignerType_;
+    bool strict_;
     int kmerLenForAlignment_;
     int paddingLength_;
     int seedAffixTrimLength_;

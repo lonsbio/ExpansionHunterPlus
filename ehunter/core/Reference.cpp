@@ -75,8 +75,8 @@ string FastaReference::getSequence(const string& contigName, int64_t start, int6
     if (!sequencePtr || extractedLength < 0 || extractedLength < end - start)
     {
         const string encoding(contigName + ":" + to_string(start) + "-" + to_string(end));
-        const string message = "Unable to extract " + encoding + " from " + referencePath_;
-        throw std::runtime_error(message);
+        const string message = "Warning: Unable to extract " + encoding + " from " + referencePath_ + ". Skipping the locus.\n";
+        throw message;
     }
 
     string sequence(sequencePtr);
