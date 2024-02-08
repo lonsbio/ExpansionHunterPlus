@@ -102,5 +102,5 @@ ExternalProject_Add(bzip2
 
 
 ExternalProject_Add_StepDependencies(ehunter configure
-	Boost spdlog htslib googletest abseil)
+	Boost spdlog htslib googletest abseil bzip2)
 
