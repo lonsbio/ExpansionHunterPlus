@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Check for required packages:
 find_package(ZLIB REQUIRED)
-find_package(BZip2 REQUIRED)
+#find_package(BZip2 REQUIRED) # build locally now with SONAME feature
 find_package(LibLZMA REQUIRED)
 find_package(CURL REQUIRED)
 
@@ -83,11 +83,22 @@ ExternalProject_Add(ehunter
 	SOURCE_DIR ${CMAKE_SOURCE_DIR}/ehunter
 	BUILD_ALWAYS YES
 	TEST_COMMAND "ctest"
-	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${installDir} -DUSE_OLD_SONAME=ON
+	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${installDir} 
 		-DCMAKE_PREFIX_PATH:PATH=${installDir}
 		-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
 		-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} ${CMAKE_SOURCE_DIR}/ehunter
 )
+
+
+# need to compile with SONAME options for older systems
+ExternalProject_Add(bzip2
+	URL https://gitlab.com/bzip2/bzip2/-/archive/master/bzip2-master.tar.gz
+	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${installDir}
+		-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+		-DCMAKE_CXX_STANDARD=11
+                -DUSE_OLD_SONAME=ON
+)
+
 
 
 ExternalProject_Add_StepDependencies(ehunter configure
