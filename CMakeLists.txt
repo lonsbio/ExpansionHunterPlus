@@ -90,13 +90,14 @@ ExternalProject_Add(ehunter
 )
 
 
-# need to compile with SONAME options for older systems
+# need to compile with SONAME options for older systems and/or add static library
 ExternalProject_Add(bzip2
 	URL https://gitlab.com/bzip2/bzip2/-/archive/master/bzip2-master.tar.gz
 	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${installDir}
 		-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
 		-DCMAKE_CXX_STANDARD=11
                 -DUSE_OLD_SONAME=ON
+                -DENABLE_STATIC_LIB=ON
 )
 
 
