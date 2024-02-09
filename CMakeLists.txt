@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Check for required packages:
 find_package(ZLIB REQUIRED)
-#find_package(BZip2 REQUIRED) # build locally now with SONAME feature
+find_package(BZip2 REQUIRED) # build locally now with SONAME feature
 find_package(LibLZMA REQUIRED)
 find_package(CURL REQUIRED)
 
