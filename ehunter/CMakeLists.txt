@@ -117,7 +117,7 @@ target_link_libraries(ExpansionHunterLib PUBLIC
         ${Boost_LIBRARIES}
         ${LIBLZMA_LIBRARIES}
         ${CURL_LIBRARIES}
-        ZLIB::ZLIB
+        libbz2_static.a
         BZip2::BZip2
         Threads::Threads
         spdlog::spdlog
