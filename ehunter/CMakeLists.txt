@@ -32,9 +32,9 @@ if (NOT APPLE)
     find_package(OpenSSL REQUIRED)
 endif ()
 
-find_library(bzip2 libbz2_static.a)
 find_library(htslib libhts.a)
 find_library(htslib hts)
+find_library(bzip2 libbz2_static.a)
 
 add_subdirectory(thirdparty/graph-tools-master-0cd9399)
 
