@@ -18,8 +18,6 @@ jobs:
     steps:
     - name: Install packages
       run: sudo apt-get install libcurl4-openssl-dev liblzma-dev
-    - name: Remove packages
-      run: sudo apt-get remove libbz2-dev
 
     - uses: actions/checkout@v2
 
