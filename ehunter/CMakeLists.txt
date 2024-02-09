@@ -20,7 +20,7 @@ add_compile_options(-Wall -Werror -Wextra)
 enable_testing()
 
 find_package(ZLIB REQUIRED)
-find_package(BZip2 1.1.0 REQUIRED)
+#find_package(BZip2 1.1.0 REQUIRED)
 find_package(LibLZMA REQUIRED)
 find_package(CURL REQUIRED)
 find_package(GTest REQUIRED)
@@ -116,6 +116,7 @@ target_link_libraries(ExpansionHunterLib PUBLIC
         ${STATIC_FLAGS}
         graphtools
         ${bzip2}
+        ZLIB::ZLIB
         ${htslib}
         ${Boost_LIBRARIES}
         ${LIBLZMA_LIBRARIES}
