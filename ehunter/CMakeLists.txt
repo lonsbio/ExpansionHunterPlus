@@ -32,6 +32,7 @@ if (NOT APPLE)
     find_package(OpenSSL REQUIRED)
 endif ()
 
+find_library(bzip2 libbz2_static.a)
 find_library(htslib libhts.a)
 find_library(htslib hts)
 
@@ -118,7 +119,7 @@ target_link_libraries(ExpansionHunterLib PUBLIC
         ${Boost_LIBRARIES}
         ${LIBLZMA_LIBRARIES}
         ${CURL_LIBRARIES}
-        libbz2_static.a
+        ${bzip2}
         Threads::Threads
         spdlog::spdlog
         absl::flat_hash_set)
