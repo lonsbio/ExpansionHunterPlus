@@ -99,6 +99,7 @@ add_library(ExpansionHunterLib
 set(CTPL_INCLUDE_DIRS thirdparty/ctpl/ctpl-0.0.2)
 target_include_directories(ExpansionHunterLib PUBLIC ${CMAKE_SOURCE_DIR})
 target_include_directories(ExpansionHunterLib SYSTEM PUBLIC
+        ${BZip2_INCLUDE_DIRS}
         ${Boost_INCLUDE_DIRS}
         ${LIBLZMA_INCLUDE_DIRS}
         ${CURL_INCLUDE_DIRS}
@@ -118,7 +119,6 @@ target_link_libraries(ExpansionHunterLib PUBLIC
         ${LIBLZMA_LIBRARIES}
         ${CURL_LIBRARIES}
         libbz2_static.a
-        BZip2::BZip2
         Threads::Threads
         spdlog::spdlog
         absl::flat_hash_set)
