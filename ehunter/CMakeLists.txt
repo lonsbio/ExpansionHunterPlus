@@ -115,12 +115,12 @@ endif ()
 target_link_libraries(ExpansionHunterLib PUBLIC
         ${STATIC_FLAGS}
         graphtools
-        ${bzip2}
-        ZLIB::ZLIB
         ${htslib}
         ${Boost_LIBRARIES}
         ${LIBLZMA_LIBRARIES}
         ${CURL_LIBRARIES}
+        ZLIB::ZLIB
+        ${bzip2}
         Threads::Threads
         spdlog::spdlog
         absl::flat_hash_set)
