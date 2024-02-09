@@ -115,8 +115,8 @@ endif ()
 target_link_libraries(ExpansionHunterLib PUBLIC
         ${STATIC_FLAGS}
         graphtools
-        ${htslib}
         ${bzip2}
+        ${htslib}
         ${Boost_LIBRARIES}
         ${LIBLZMA_LIBRARIES}
         ${CURL_LIBRARIES}
