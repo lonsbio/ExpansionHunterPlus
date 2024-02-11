@@ -11,6 +11,7 @@ find_package(LibLZMA REQUIRED)
 find_package(CURL REQUIRED)
 
 if(NOT APPLE)
+  set(OPENSSL_USE_STATIC_LIBS)
   find_package(OpenSSL REQUIRED)
 endif()
 
