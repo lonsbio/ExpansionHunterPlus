@@ -29,7 +29,7 @@ find_package(spdlog REQUIRED)
 find_package(absl REQUIRED)
 
 if (NOT APPLE)
-    set(OPENSSL_USE_STATIC_LIBS)
+    set(OPENSSL_USE_STATIC_LIBS TRUE)
     find_package(OpenSSL REQUIRED)
 endif ()
 
