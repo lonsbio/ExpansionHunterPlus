@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Install packages
-      run: yum -y install openssl-devel curl-devel xz-devel
+      run: yum -y install openssl-devel curl-devel xz-devel bzip2
 
     - uses: actions/checkout@v2
 
