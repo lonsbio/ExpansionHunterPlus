@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Install packages
-      run: yum install openssl-dev curl-devel lzma-devel
+      run: yum install openssl-devel curl-devel lzma-devel
 
     - uses: actions/checkout@v2
 
