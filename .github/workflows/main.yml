@@ -15,7 +15,7 @@ jobs:
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ubuntu-20.04
     container: quay.io/pypa/manylinux2014_x86_64
-      volume:/github/home:/build
+      volume: /github/home:/build
     steps:
     - name: Install packages
       run: yum -y install make gcc perl-core pcre-devel wget zlib-devel openssl openssl-devel curl-devel xz-devel bzip2 bzip2-devel
