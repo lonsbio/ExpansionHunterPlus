@@ -35,6 +35,8 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
     - name: Check build
       run: ls -R
+    - name: Check build path
+      run: ls -R /github/home
     - uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
