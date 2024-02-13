@@ -37,6 +37,15 @@ jobs:
       run: ls -R
     - name: Check build path
       run: ls -R /home/runner/work/ExpansionHunterPlus/ExpansionHunterPlus/build
+    - uses: actions/upload-artifact@v4
+      with:
+        name: builddir 
+        path: /home/runner/work/ExpansionHunterPlus/ExpansionHunterPlus/build/
+    - uses: actions/download-artifact@v4
+      with:
+        name: builddir 
+        path: build
+
     - uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
