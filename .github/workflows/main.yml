@@ -15,7 +15,7 @@ jobs:
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ubuntu-20.04
     container: quay.io/pypa/manylinux2014_x86_64
-
+      volume:/github/home:/build
     steps:
     - name: Install packages
       run: yum -y install make gcc perl-core pcre-devel wget zlib-devel openssl openssl-devel curl-devel xz-devel bzip2 bzip2-devel
@@ -37,15 +37,8 @@ jobs:
       run: ls -R
     - name: Check build path
       run: ls -R /home/runner/work/ExpansionHunterPlus/ExpansionHunterPlus/build
-    - uses: actions/upload-artifact@v4
-      with:
-        name: builddir 
-        path: /home/runner/work/ExpansionHunterPlus/ExpansionHunterPlus/build/
-    - uses: actions/download-artifact@v4
-      with:
-        name: builddir 
-        path: build
-
+    - name: Cp  build path
+      run: cp -r /home/runner/work/ExpansionHunterPlus/ExpansionHunterPlus/build /build
     - uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
@@ -54,5 +47,7 @@ jobs:
              ./build/install/bin/ExpansionHunter
              ./variant_catalog/*
              ./example/*
+             /build/install/bin/ExpansionHunter
+             /build/build/install/bin/ExpansionHunter
       env:
        GITHUB_TOKEN: ${{ secrets.EHP_DEPLOY_KEY }}
