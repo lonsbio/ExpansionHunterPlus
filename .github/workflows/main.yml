@@ -36,7 +36,7 @@ jobs:
     - name: Check build
       run: ls -R
     - name: Check build path
-      run: ls -R /github/home
+      run: ls -R /home/runner/work/ExpansionHunterPlus/ExpansionHunterPlus/build
     - uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
