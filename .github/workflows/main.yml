@@ -39,7 +39,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
        files: |
-             /home/runner/work/ExpansionHunterPlus/ExpansionHunterPlus/build/install/bin/ExpansionHunter
+             ${{github.workspace}}/build/install/bin/ExpansionHunter
              ./build/install/bin/ExpansionHunter
              ./variant_catalog/*
              ./example/*
